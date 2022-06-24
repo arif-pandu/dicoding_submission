@@ -11,8 +11,23 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  //
+  TextEditingController usernameController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
   void initMessage() {
     print("Halo");
+  }
+
+  void checkValidity(String username, String password, BuildContext context) {
+    if (username.isNotEmpty && password.isNotEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Welcome, $username!")));
+    } else if (username.isEmpty || password.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Please fill blank(s) field")));
+    } else {
+      // If another possibilities happen, lines below will be triggered
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("error : please contact dev team for further information")));
+    }
   }
 
   @override
@@ -55,6 +70,7 @@ class _LoginPageState extends State<LoginPage> {
                         border: Border.all(width: 2, color: AppColor.blackColor),
                       ),
                       child: TextField(
+                        controller: usernameController,
                         style: AppTextStyle.styleCommon,
                         decoration: InputDecoration(
                           border: InputBorder.none,
@@ -83,6 +99,7 @@ class _LoginPageState extends State<LoginPage> {
                         border: Border.all(width: 2, color: AppColor.blackColor),
                       ),
                       child: TextField(
+                        controller: passwordController,
                         obscureText: true,
                         style: AppTextStyle.styleCommon,
                         decoration: InputDecoration(
@@ -95,7 +112,12 @@ class _LoginPageState extends State<LoginPage> {
                 // Login Button
                 InkWell(
                   onTap: () {
-                    print("Login!");
+                    print("Processing Login...");
+                    checkValidity(
+                      usernameController.value.text,
+                      passwordController.value.text,
+                      context,
+                    );
                   },
                   child: Container(
                     margin: EdgeInsets.only(top: 15),
