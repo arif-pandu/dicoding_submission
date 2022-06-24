@@ -1,5 +1,4 @@
 import 'dart:math';
-
 import 'package:dicoding_submission/const/color.dart';
 import 'package:flutter/material.dart';
 
@@ -18,7 +17,7 @@ class BGApp extends StatelessWidget {
     final Color _color1 = Color((Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(1.0);
     final Color _color2 = Color((Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(1.0);
 
-    return Container(
+    return SizedBox(
       height: height,
       width: width,
       child: Stack(
@@ -31,7 +30,7 @@ class BGApp extends StatelessWidget {
               width: height,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: Colors.grey.withOpacity(0.1),
+                color: AppColor.greyColor.withOpacity(0.1),
               ),
             ),
           ),

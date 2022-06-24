@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
           //
           ),
-      home: LoginPage(),
+      home: const LoginPage(),
     );
   }
 }

@@ -16,17 +16,17 @@ class _LoginPageState extends State<LoginPage> {
   TextEditingController passwordController = TextEditingController();
 
   void initMessage() {
-    print("Halo");
+    debugPrint("Hello you, if you are reading this it means the project is running successfully");
   }
 
   void checkValidity(String username, String password, BuildContext context) {
     if (username.isNotEmpty && password.isNotEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Welcome, $username!")));
     } else if (username.isEmpty || password.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Please fill blank(s) field")));
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Please fill blank(s) field")));
     } else {
       // If another possibilities happen, lines below will be triggered
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("error : please contact dev team for further information")));
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("error : please contact dev team for further information")));
     }
   }
 
@@ -60,8 +60,8 @@ class _LoginPageState extends State<LoginPage> {
                       color: AppColor.blackColor,
                     ),
                     Container(
-                      margin: EdgeInsets.only(left: 10, right: 24 + 10),
-                      padding: EdgeInsets.symmetric(horizontal: 4),
+                      margin: const EdgeInsets.only(left: 10, right: 24 + 10),
+                      padding: const EdgeInsets.symmetric(horizontal: 4),
                       height: 50,
                       width: width * 0.4,
                       decoration: BoxDecoration(
@@ -72,7 +72,7 @@ class _LoginPageState extends State<LoginPage> {
                       child: TextField(
                         controller: usernameController,
                         style: AppTextStyle.styleCommon,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           border: InputBorder.none,
                         ),
                       ),
@@ -89,8 +89,8 @@ class _LoginPageState extends State<LoginPage> {
                       color: AppColor.blackColor,
                     ),
                     Container(
-                      margin: EdgeInsets.only(left: 10, right: 24 + 10),
-                      padding: EdgeInsets.symmetric(horizontal: 4),
+                      margin: const EdgeInsets.only(left: 10, right: 24 + 10),
+                      padding: const EdgeInsets.symmetric(horizontal: 4),
                       height: 50,
                       width: width * 0.4,
                       decoration: BoxDecoration(
@@ -102,7 +102,7 @@ class _LoginPageState extends State<LoginPage> {
                         controller: passwordController,
                         obscureText: true,
                         style: AppTextStyle.styleCommon,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           border: InputBorder.none,
                         ),
                       ),
@@ -112,7 +112,7 @@ class _LoginPageState extends State<LoginPage> {
                 // Login Button
                 InkWell(
                   onTap: () {
-                    print("Processing Login...");
+                    debugPrint("Processing Login...");
                     checkValidity(
                       usernameController.value.text,
                       passwordController.value.text,
@@ -120,8 +120,8 @@ class _LoginPageState extends State<LoginPage> {
                     );
                   },
                   child: Container(
-                    margin: EdgeInsets.only(top: 15),
-                    padding: EdgeInsets.symmetric(vertical: 6, horizontal: 15),
+                    margin: const EdgeInsets.only(top: 15),
+                    padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 15),
                     child: Text(
                       "Login",
                       style: AppTextStyle.styleCommon.copyWith(
