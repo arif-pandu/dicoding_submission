@@ -3,20 +3,21 @@ import 'package:dicoding_submission/const/color.dart';
 import 'package:flutter/material.dart';
 
 class BGApp extends StatelessWidget {
-  const BGApp({
+  BGApp({
     Key? key,
     required this.height,
     required this.width,
+    required this.color1,
+    required this.color2,
   }) : super(key: key);
 
   final double height;
   final double width;
+  final Color color1;
+  final Color color2;
 
   @override
   Widget build(BuildContext context) {
-    final Color _color1 = Color((Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(1.0);
-    final Color _color2 = Color((Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(1.0);
-
     return SizedBox(
       height: height,
       width: width,
@@ -42,7 +43,7 @@ class BGApp extends StatelessWidget {
               width: width * 0.4,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: _color2,
+                color: color2,
               ),
             ),
           ),
@@ -54,7 +55,7 @@ class BGApp extends StatelessWidget {
               width: width * 0.5,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: _color1,
+                color: color1,
               ),
             ),
           ),
@@ -66,7 +67,7 @@ class BGApp extends StatelessWidget {
               width: width * 0.5,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: _color1,
+                color: color1,
               ),
             ),
           ),
@@ -78,7 +79,7 @@ class BGApp extends StatelessWidget {
               width: width * 0.25,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: _color2,
+                color: color2,
               ),
             ),
           ),
