@@ -18,8 +18,14 @@ class _LoginPageState extends State<LoginPage> {
   TextEditingController usernameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
+  FocusNode focusUser = FocusNode();
+  FocusNode focusPass = FocusNode();
+
   final Color color1 = Color((Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(1.0);
   final Color color2 = Color((Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(1.0);
+
+  Color borderUserColor = AppColor.blackColor;
+  Color borderPassColor = AppColor.blackColor;
 
   void initMessage() {
     debugPrint("Hello you, if you are reading this it means the project is running successfully");
@@ -28,14 +34,38 @@ class _LoginPageState extends State<LoginPage> {
   void checkValidity(String username, String password, BuildContext context) {
     if (username.isNotEmpty && password.isNotEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Welcome, $username!")));
-      Navigator.push(context, MaterialPageRoute(builder: (context) {
-        return HomePage();
-      }));
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) {
+          return const HomePage();
+        }),
+      );
     } else if (username.isEmpty || password.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Please fill blank(s) field")));
+      setState(() {
+        if (username.isEmpty && password.isNotEmpty) {
+          borderUserColor = AppColor.redColor;
+        } else if (username.isNotEmpty && password.isEmpty) {
+          borderPassColor = AppColor.redColor;
+        } else {
+          borderUserColor = AppColor.redColor;
+          borderPassColor = AppColor.redColor;
+        }
+      });
     } else {
       // If another possibilities happen, lines below will be triggered
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("error : please contact dev team for further information")));
+    }
+  }
+
+  void onChangeValue() {
+    debugPrint("is Field User Focus : ${focusUser.hasFocus.toString()}");
+    debugPrint("is Field Pass Focus : ${focusPass.hasFocus.toString()}");
+    if (focusUser.hasFocus) {
+      setState(() {
+        borderUserColor = AppColor.blackColor;
+        borderPassColor = AppColor.blackColor;
+      });
     }
   }
 
@@ -43,10 +73,30 @@ class _LoginPageState extends State<LoginPage> {
   void initState() {
     super.initState();
     initMessage();
+    focusUser.addListener(() {
+      onChangeValue();
+    });
+    focusPass.addListener(() {
+      onChangeValue();
+    });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    focusUser.removeListener(() {
+      onChangeValue();
+    });
+    focusPass.removeListener(() {
+      onChangeValue();
+    });
+    focusUser.dispose();
+    focusPass.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    //
     final double height = MediaQuery.of(context).size.height;
     final double width = MediaQuery.of(context).size.width;
 
@@ -86,7 +136,10 @@ class _LoginPageState extends State<LoginPage> {
                         decoration: BoxDecoration(
                           color: AppColor.whiteColor,
                           borderRadius: BorderRadius.circular(10),
-                          border: Border.all(width: 2, color: AppColor.blackColor),
+                          border: Border.all(
+                            width: 2,
+                            color: borderUserColor,
+                          ),
                         ),
                         child: TextField(
                           controller: usernameController,
@@ -94,6 +147,7 @@ class _LoginPageState extends State<LoginPage> {
                           decoration: const InputDecoration(
                             border: InputBorder.none,
                           ),
+                          focusNode: focusUser,
                         ),
                       ),
                     ],
@@ -115,7 +169,10 @@ class _LoginPageState extends State<LoginPage> {
                         decoration: BoxDecoration(
                           color: AppColor.whiteColor,
                           borderRadius: BorderRadius.circular(10),
-                          border: Border.all(width: 2, color: AppColor.blackColor),
+                          border: Border.all(
+                            width: 2,
+                            color: borderPassColor,
+                          ),
                         ),
                         child: TextField(
                           controller: passwordController,
@@ -124,6 +181,7 @@ class _LoginPageState extends State<LoginPage> {
                           decoration: const InputDecoration(
                             border: InputBorder.none,
                           ),
+                          focusNode: focusPass,
                         ),
                       ),
                     ],

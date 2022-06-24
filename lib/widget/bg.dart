@@ -31,7 +31,8 @@ class BGApp extends StatelessWidget {
               width: height,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: AppColor.greyColor.withOpacity(0.1),
+                // color: AppColor.greyColor.withOpacity(0.1),
+                color: color2.withOpacity(0.05),
               ),
             ),
           ),
