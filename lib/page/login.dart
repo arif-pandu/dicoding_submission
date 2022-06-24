@@ -29,11 +29,14 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       body: Stack(
         children: [
+          // Generated Random Color Pattern Background
           BGApp(height: height, width: width),
+
           Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                // Input Username Widget
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -42,7 +45,7 @@ class _LoginPageState extends State<LoginPage> {
                       color: AppColor.blackColor,
                     ),
                     Container(
-                      margin: EdgeInsets.only(left: 10),
+                      margin: EdgeInsets.only(left: 10, right: 24 + 10),
                       padding: EdgeInsets.symmetric(horizontal: 4),
                       height: 50,
                       width: width * 0.4,
@@ -61,6 +64,7 @@ class _LoginPageState extends State<LoginPage> {
                   ],
                 ),
                 const SizedBox(height: 20),
+                // Input Password Widget
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -69,7 +73,7 @@ class _LoginPageState extends State<LoginPage> {
                       color: AppColor.blackColor,
                     ),
                     Container(
-                      margin: EdgeInsets.only(left: 10),
+                      margin: EdgeInsets.only(left: 10, right: 24 + 10),
                       padding: EdgeInsets.symmetric(horizontal: 4),
                       height: 50,
                       width: width * 0.4,
@@ -87,6 +91,28 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                   ],
+                ),
+                // Login Button
+                InkWell(
+                  onTap: () {
+                    print("Login!");
+                  },
+                  child: Container(
+                    margin: EdgeInsets.only(top: 15),
+                    padding: EdgeInsets.symmetric(vertical: 6, horizontal: 15),
+                    child: Text(
+                      "Login",
+                      style: AppTextStyle.styleCommon.copyWith(
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
+                        color: AppColor.whiteColor,
+                      ),
+                    ),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(7),
+                      color: AppColor.blackColor,
+                    ),
+                  ),
                 ),
               ],
             ),
