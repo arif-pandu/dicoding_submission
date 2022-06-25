@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:dicoding_submission/const/color.dart';
-import 'package:dicoding_submission/const/test_style.dart';
+import 'package:dicoding_submission/const/text_style.dart';
 import 'package:dicoding_submission/page/homepage.dart';
 import 'package:dicoding_submission/widget/bg.dart';
 import 'package:flutter/material.dart';

@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
+import 'package:dicoding_submission/const/catalog_data.dart';
 import 'package:dicoding_submission/const/color.dart';
 import 'package:dicoding_submission/widget/thumbnail_item.dart';
 import 'package:flutter/material.dart';
@@ -15,13 +16,14 @@ class _HomePageState extends State<HomePage> {
   //
   Alignment alignTitle = Alignment.centerLeft;
 
-  Future<void> changeAlignment() async {
-    print("Alignment Changed!");
+  Future<void> stretchHeader() async {
+    print("Header Stretched!");
   }
 
   @override
   void initState() {
     super.initState();
+    debugPrint("Success Login :)");
   }
 
   @override
@@ -43,7 +45,7 @@ class _HomePageState extends State<HomePage> {
             titleSpacing: 0.0,
             stretch: true,
             stretchTriggerOffset: 50,
-            onStretchTrigger: changeAlignment,
+            onStretchTrigger: stretchHeader,
             flexibleSpace: FlexibleSpaceBar(
               titlePadding: EdgeInsetsDirectional.only(
                 top: 25,
@@ -71,15 +73,6 @@ class _HomePageState extends State<HomePage> {
                   "assets/image/header_image.png",
                   fit: BoxFit.cover,
                 ),
-                // decoration: BoxDecoration(
-                //   color: AppColor.orangeColor,
-                //   image: DecorationImage(
-                //     image: AssetImage(
-                //       "assets/image/header_image.png",
-                //     ),
-                //     fit: BoxFit.cover,
-                //   ),
-                // ),
               ),
             ),
           ),
@@ -87,8 +80,15 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               children: [
                 ...List.generate(
-                  5,
-                  (index) => ItemThumb(height: height, width: width),
+                  cakeList.length,
+                  (index) => ItemThumb(
+                    height: height,
+                    width: width,
+                    cakeName: cakeList[index]["name"],
+                    cakePrice: cakeList[index]["price"],
+                    cakeRating: cakeList[index]["rating"],
+                    cakeKeyword: cakeList[index]["keyword"],
+                  ),
                 ),
               ],
             ),

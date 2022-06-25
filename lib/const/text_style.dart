@@ -17,4 +17,14 @@ class AppTextStyle {
     fontWeight: FontWeight.bold,
     color: AppColor.blackColor,
   );
+  static const TextStyle styleSubTitle = TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeight.w500,
+    color: AppColor.blackColor,
+  );
+  static const TextStyle styleDescription = TextStyle(
+    fontSize: 15,
+    fontWeight: FontWeight.w400,
+    color: AppColor.blackColor,
+  );
 }
