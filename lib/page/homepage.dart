@@ -87,6 +87,7 @@ class _HomePageState extends State<HomePage> {
                     cakeName: cakeList[index]["name"],
                     cakePrice: cakeList[index]["price"],
                     cakeRating: cakeList[index]["rating"],
+                    cakeTag: cakeList[index]["tag"],
                     cakeKeyword: cakeList[index]["keyword"],
                   ),
                 ),
