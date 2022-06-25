@@ -88,53 +88,56 @@ class ItemThumb extends StatelessWidget {
               const SizedBox(
                 width: 20,
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Text(
-                    cakeName,
-                    style: AppTextStyle.styleSubTitle,
-                  ),
-                  Row(
-                    children: [
-                      ...List.generate(
-                        cakeRating.isOdd ? (cakeRating + 1) ~/ 2 : cakeRating ~/ 2,
-                        (index) {
-                          if (cakeRating.isEven) {
-                            return const Icon(Icons.star_rounded, size: 20, color: AppColor.blackColor);
-                          } else {
-                            int _tempCount = (cakeRating - 1) ~/ 2;
-                            if (index < _tempCount) {
+              Container(
+                width: width - 40 - 20 - (height * 0.2),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Text(
+                      cakeName,
+                      style: AppTextStyle.styleSubTitle,
+                    ),
+                    Row(
+                      children: [
+                        ...List.generate(
+                          cakeRating.isOdd ? (cakeRating + 1) ~/ 2 : cakeRating ~/ 2,
+                          (index) {
+                            if (cakeRating.isEven) {
                               return const Icon(Icons.star_rounded, size: 20, color: AppColor.blackColor);
                             } else {
-                              return const Icon(Icons.star_half_rounded, size: 20, color: AppColor.blackColor);
+                              int _tempCount = (cakeRating - 1) ~/ 2;
+                              if (index < _tempCount) {
+                                return const Icon(Icons.star_rounded, size: 20, color: AppColor.blackColor);
+                              } else {
+                                return const Icon(Icons.star_half_rounded, size: 20, color: AppColor.blackColor);
+                              }
                             }
-                          }
+                          },
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 20,
+                      // width: (width - 60) / 2 - 20,
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: cakeKeyword.length,
+                        itemBuilder: (context, index) {
+                          return Container(
+                            margin: const EdgeInsets.only(right: 5),
+                            padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 7),
+                            decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: AppColor.whiteColor),
+                            child: Text(
+                              cakeKeyword[index],
+                              style: AppTextStyle.styleCommon.copyWith(fontSize: 14),
+                            ),
+                          );
                         },
                       ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 20,
-                    width: width * 0.5,
-                    child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: cakeKeyword.length,
-                      itemBuilder: (context, index) {
-                        return Container(
-                          margin: const EdgeInsets.only(right: 5),
-                          padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 7),
-                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: AppColor.whiteColor),
-                          child: Text(
-                            cakeKeyword[index],
-                            style: AppTextStyle.styleCommon.copyWith(fontSize: 14),
-                          ),
-                        );
-                      },
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ],
           ),
