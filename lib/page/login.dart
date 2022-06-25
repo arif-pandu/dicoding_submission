@@ -170,6 +170,7 @@ class _LoginPageState extends State<LoginPage> {
                           style: AppTextStyle.styleCommon,
                           decoration: const InputDecoration(
                             border: InputBorder.none,
+                            hintText: "Username",
                           ),
                           focusNode: focusUser,
                         ),
@@ -204,6 +205,7 @@ class _LoginPageState extends State<LoginPage> {
                           style: AppTextStyle.styleCommon,
                           decoration: const InputDecoration(
                             border: InputBorder.none,
+                            hintText: "Password",
                           ),
                           focusNode: focusPass,
                         ),
