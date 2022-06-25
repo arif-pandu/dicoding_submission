@@ -116,6 +116,30 @@ class _LoginPageState extends State<LoginPage> {
               color2: color2,
             ),
             //
+            Positioned(
+              top: height * 0.2,
+              left: width / 2 - 75,
+              child: Container(
+                width: 150,
+                // color: Colors.amber,
+                child: Center(
+                  child: Column(
+                    children: [
+                      Text(
+                        "Cake Bakery",
+                        style: AppTextStyle.styleTitle.copyWith(fontSize: 20),
+                        textAlign: TextAlign.center,
+                      ),
+                      const SizedBox(height: 10),
+                      Text(
+                        "Login As Admin",
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            //
             Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,

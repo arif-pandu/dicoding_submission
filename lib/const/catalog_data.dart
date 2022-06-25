@@ -16,7 +16,9 @@ List<Map<String, dynamic>> cakeList = [
     "keyword": [
       "rainbow",
       "colorful",
-      "happy",
+      "red",
+      "green",
+      "yellow",
     ],
   },
   {

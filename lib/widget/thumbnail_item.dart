@@ -30,7 +30,7 @@ class ItemThumb extends StatelessWidget {
       height: height * 0.2,
       width: width,
       decoration: BoxDecoration(
-        color: Colors.amber,
+        color: AppColor.orangeColor,
         borderRadius: BorderRadius.circular(15),
         boxShadow: [
           BoxShadow(
@@ -77,22 +77,37 @@ class ItemThumb extends StatelessWidget {
                   letterSpacing: 2,
                 ),
               ),
-              Row(
-                children: [
-                  ...List.generate(
-                    cakeKeyword.length,
-                    (index) => Container(
+              SizedBox(
+                height: 20,
+                width: width * 0.5,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: cakeKeyword.length,
+                  itemBuilder: (context, index) {
+                    return Container(
                       margin: const EdgeInsets.only(right: 5),
-                      padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 6),
+                      padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 7),
                       decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: AppColor.whiteColor),
-                      child: Text(cakeKeyword[index]),
-                    ),
-                  ),
-                ],
+                      child: Text(
+                        cakeKeyword[index],
+                        style: AppTextStyle.styleCommon.copyWith(fontSize: 14),
+                      ),
+                    );
+                  },
+                ),
               ),
-              // Text(
-              //   cakeKeyword.toString().replaceAll("[", "").replaceAll("]", ""),
-              //   style: AppTextStyle.styleDescription,
+              // Row(
+              //   children: [
+              //     ...List.generate(
+              //       cakeKeyword.length,
+              //       (index) => Container(
+              //         margin: const EdgeInsets.only(right: 5),
+              //         padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 7),
+              //         decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: AppColor.whiteColor),
+              //         child: Text(cakeKeyword[index]),
+              //       ),
+              //     ),
+              //   ],
               // ),
             ],
           ),
