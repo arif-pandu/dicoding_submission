@@ -9,6 +9,8 @@ List<Map<String, dynamic>> cakeList = [
       "brown",
       "elegant",
     ],
+    "description":
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
   },
   {
     "name": "Rainbow Cake",
@@ -22,6 +24,8 @@ List<Map<String, dynamic>> cakeList = [
       "green",
       "yellow",
     ],
+    "description":
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
   },
   {
     "name": "Sponge Cake",
@@ -33,6 +37,8 @@ List<Map<String, dynamic>> cakeList = [
       "sponge",
       "soft",
     ],
+    "description":
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
   },
   {
     "name": "Butter Cake",
@@ -44,6 +50,8 @@ List<Map<String, dynamic>> cakeList = [
       "brown",
       "elegant",
     ],
+    "description":
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
   },
   {
     "name": "Putu Cake",
@@ -55,5 +63,7 @@ List<Map<String, dynamic>> cakeList = [
       "tasty",
       "coconut",
     ],
+    "description":
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
   },
 ];

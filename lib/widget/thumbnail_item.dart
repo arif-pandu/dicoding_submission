@@ -13,6 +13,7 @@ class ItemThumb extends StatelessWidget {
     required this.cakeRating,
     required this.cakeTag,
     required this.cakeKeyword,
+    required this.cakeDescription,
   }) : super(key: key);
 
   final double height;
@@ -22,6 +23,7 @@ class ItemThumb extends StatelessWidget {
   final int cakeRating;
   final int cakeTag;
   final List cakeKeyword;
+  final String cakeDescription;
 
   @override
   Widget build(BuildContext context) {
@@ -39,6 +41,7 @@ class ItemThumb extends StatelessWidget {
                 cakeRating: cakeRating,
                 cakeTag: cakeTag,
                 cakeKeyword: cakeKeyword,
+                cakeDescription: cakeDescription,
               );
             },
           ),
@@ -92,13 +95,6 @@ class ItemThumb extends StatelessWidget {
                     cakeName,
                     style: AppTextStyle.styleSubTitle,
                   ),
-                  // Text(
-                  //   (starUnicode * (cakeRating.toDouble() ~/ 2)).toString() + "($cakeRating)",
-                  //   style: AppTextStyle.styleThin.copyWith(
-                  //     fontWeight: FontWeight.w600,
-                  //     letterSpacing: 2,
-                  //   ),
-                  // ),
                   Row(
                     children: [
                       ...List.generate(
@@ -137,19 +133,6 @@ class ItemThumb extends StatelessWidget {
                       },
                     ),
                   ),
-                  // Row(
-                  //   children: [
-                  //     ...List.generate(
-                  //       cakeKeyword.length,
-                  //       (index) => Container(
-                  //         margin: const EdgeInsets.only(right: 5),
-                  //         padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 7),
-                  //         decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: AppColor.whiteColor),
-                  //         child: Text(cakeKeyword[index]),
-                  //       ),
-                  //     ),
-                  //   ],
-                  // ),
                 ],
               ),
             ],
