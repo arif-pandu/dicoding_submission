@@ -119,7 +119,7 @@ class _LoginPageState extends State<LoginPage> {
             Positioned(
               top: height * 0.2,
               left: width / 2 - 75,
-              child: Container(
+              child: SizedBox(
                 width: 150,
                 // color: Colors.amber,
                 child: Center(
@@ -131,7 +131,7 @@ class _LoginPageState extends State<LoginPage> {
                         textAlign: TextAlign.center,
                       ),
                       const SizedBox(height: 10),
-                      Text(
+                      const Text(
                         "Login As Admin",
                       ),
                     ],

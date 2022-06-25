@@ -9,6 +9,7 @@ class ItemThumb extends StatelessWidget {
     required this.height,
     required this.width,
     required this.cakeName,
+    required this.cakePath,
     required this.cakePrice,
     required this.cakeRating,
     required this.cakeTag,
@@ -19,6 +20,7 @@ class ItemThumb extends StatelessWidget {
   final double height;
   final double width;
   final String cakeName;
+  final String cakePath;
   final int cakePrice;
   final int cakeRating;
   final int cakeTag;
@@ -27,8 +29,6 @@ class ItemThumb extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String starUnicode = "\u2605";
-
     return GestureDetector(
       onTap: () {
         Navigator.push(
@@ -37,6 +37,7 @@ class ItemThumb extends StatelessWidget {
             builder: (context) {
               return DetailPage(
                 cakeName: cakeName,
+                cakePath: cakePath,
                 cakePrice: cakePrice,
                 cakeRating: cakeRating,
                 cakeTag: cakeTag,
@@ -77,8 +78,8 @@ class ItemThumb extends StatelessWidget {
                     border: Border.all(width: 3, color: AppColor.whiteColor),
                     borderRadius: BorderRadius.circular(10),
                     color: AppColor.orangeColor,
-                    image: const DecorationImage(
-                      image: AssetImage("assets/image/header_image.png"),
+                    image: DecorationImage(
+                      image: AssetImage(cakePath),
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -101,13 +102,13 @@ class ItemThumb extends StatelessWidget {
                         cakeRating.isOdd ? (cakeRating + 1) ~/ 2 : cakeRating ~/ 2,
                         (index) {
                           if (cakeRating.isEven) {
-                            return Icon(Icons.star_rounded, size: 20, color: AppColor.blackColor);
+                            return const Icon(Icons.star_rounded, size: 20, color: AppColor.blackColor);
                           } else {
-                            int _tempCount = ((cakeRating - 1) / 2).toInt();
+                            int _tempCount = (cakeRating - 1) ~/ 2;
                             if (index < _tempCount) {
-                              return Icon(Icons.star_rounded, size: 20, color: AppColor.blackColor);
+                              return const Icon(Icons.star_rounded, size: 20, color: AppColor.blackColor);
                             } else {
-                              return Icon(Icons.star_half_rounded, size: 20, color: AppColor.blackColor);
+                              return const Icon(Icons.star_half_rounded, size: 20, color: AppColor.blackColor);
                             }
                           }
                         },

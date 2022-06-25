@@ -1,9 +1,7 @@
-import 'dart:math';
-import 'package:dicoding_submission/const/color.dart';
 import 'package:flutter/material.dart';
 
 class BGApp extends StatelessWidget {
-  BGApp({
+  const BGApp({
     Key? key,
     required this.height,
     required this.width,
@@ -31,7 +29,6 @@ class BGApp extends StatelessWidget {
               width: height,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                // color: AppColor.greyColor.withOpacity(0.1),
                 color: color2.withOpacity(0.05),
               ),
             ),

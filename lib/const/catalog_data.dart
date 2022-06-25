@@ -1,6 +1,7 @@
 List<Map<String, dynamic>> cakeList = [
   {
     "name": "Red Velvet",
+    "path": "assets/image/redvelvet.jpg",
     "price": 25,
     "rating": 10,
     "tag": 1,
@@ -14,6 +15,7 @@ List<Map<String, dynamic>> cakeList = [
   },
   {
     "name": "Rainbow Cake",
+    "path": "assets/image/rainbow_cake.jpg",
     "price": 20,
     "rating": 8,
     "tag": 2,
@@ -29,6 +31,7 @@ List<Map<String, dynamic>> cakeList = [
   },
   {
     "name": "Sponge Cake",
+    "path": "assets/image/sponge_cake.jpg",
     "price": 20,
     "rating": 9,
     "tag": 3,
@@ -42,6 +45,7 @@ List<Map<String, dynamic>> cakeList = [
   },
   {
     "name": "Butter Cake",
+    "path": "assets/image/butter_cake.jpg",
     "price": 18,
     "rating": 8,
     "tag": 4,
@@ -55,6 +59,7 @@ List<Map<String, dynamic>> cakeList = [
   },
   {
     "name": "Putu Cake",
+    "path": "assets/image/putu_cake.jpg",
     "price": 5,
     "rating": 10,
     "tag": 5,
