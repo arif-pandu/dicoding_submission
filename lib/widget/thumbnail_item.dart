@@ -88,7 +88,7 @@ class ItemThumb extends StatelessWidget {
               const SizedBox(
                 width: 20,
               ),
-              Container(
+              SizedBox(
                 width: width - 40 - 20 - (height * 0.2),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

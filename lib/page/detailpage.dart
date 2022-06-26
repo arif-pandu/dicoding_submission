@@ -2,7 +2,7 @@ import 'package:dicoding_submission/const/color.dart';
 import 'package:dicoding_submission/const/text_style.dart';
 import 'package:flutter/material.dart';
 
-class DetailPage extends StatelessWidget {
+class DetailPage extends StatefulWidget {
   const DetailPage({
     Key? key,
     required this.cakeName,
@@ -23,6 +23,20 @@ class DetailPage extends StatelessWidget {
   final String cakeDescription;
 
   @override
+  State<DetailPage> createState() => _DetailPageState();
+}
+
+class _DetailPageState extends State<DetailPage> {
+  //
+  int cakeCart = 0;
+
+  void _addCart() {
+    setState(() {
+      cakeCart++;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     //
     final double height = MediaQuery.of(context).size.height;
@@ -41,7 +55,7 @@ class DetailPage extends StatelessWidget {
                   height: height * 0.4,
                   width: width,
                   child: Image.asset(
-                    cakePath,
+                    widget.cakePath,
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -54,7 +68,7 @@ class DetailPage extends StatelessWidget {
                     children: [
                       // Cake Name
                       Text(
-                        cakeName,
+                        widget.cakeName,
                         style: AppTextStyle.styleTitle,
                       ),
                       // Rating
@@ -63,12 +77,12 @@ class DetailPage extends StatelessWidget {
                         child: Row(
                           children: [
                             ...List.generate(
-                              cakeRating.isOdd ? (cakeRating + 1) ~/ 2 : cakeRating ~/ 2,
+                              widget.cakeRating.isOdd ? (widget.cakeRating + 1) ~/ 2 : widget.cakeRating ~/ 2,
                               (index) {
-                                if (cakeRating.isEven) {
+                                if (widget.cakeRating.isEven) {
                                   return const Icon(Icons.star_rounded);
                                 } else {
-                                  int _tempCount = (cakeRating - 1) ~/ 2;
+                                  int _tempCount = (widget.cakeRating - 1) ~/ 2;
                                   if (index < _tempCount) {
                                     return const Icon(Icons.star_rounded);
                                   } else {
@@ -82,7 +96,7 @@ class DetailPage extends StatelessWidget {
                       ),
                       // Price
                       Text(
-                        "IDR " + cakePrice.toString() + ".000",
+                        "IDR " + widget.cakePrice.toString() + ".000",
                         style: AppTextStyle.styleSubTitle.copyWith(fontWeight: FontWeight.w400),
                       ),
                       // Cake's Keyword
@@ -92,7 +106,7 @@ class DetailPage extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(horizontal: 10),
                         child: ListView.builder(
                           scrollDirection: Axis.horizontal,
-                          itemCount: cakeKeyword.length,
+                          itemCount: widget.cakeKeyword.length,
                           itemBuilder: (context, index) {
                             return Center(
                               child: Container(
@@ -100,7 +114,7 @@ class DetailPage extends StatelessWidget {
                                 padding: const EdgeInsets.symmetric(vertical: 3, horizontal: 10),
                                 decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: AppColor.whiteColor, border: Border.all(width: 1, color: AppColor.blackColor)),
                                 child: Text(
-                                  cakeKeyword[index],
+                                  widget.cakeKeyword[index],
                                   style: AppTextStyle.styleCommon.copyWith(fontSize: 14),
                                 ),
                               ),
@@ -111,7 +125,7 @@ class DetailPage extends StatelessWidget {
                       const SizedBox(height: 20),
                       // Description Paragraph
                       Text(
-                        "\u0009\u0009" + cakeDescription,
+                        "\u0009\u0009" + widget.cakeDescription,
                         style: AppTextStyle.styleCommon.copyWith(
                           wordSpacing: 3,
                         ),
@@ -120,6 +134,68 @@ class DetailPage extends StatelessWidget {
                   ),
                 ),
                 const Spacer(),
+                // Check Price
+                SizedBox(
+                  width: width,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        margin: const EdgeInsets.only(left: 10, bottom: 10),
+                        padding: const EdgeInsets.only(left: 20, right: 20),
+                        height: 80,
+                        width: width - 80 - 30,
+                        decoration: BoxDecoration(
+                          color: AppColor.blackColor,
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              "Rp.",
+                              style: AppTextStyle.styleSubTitle.copyWith(color: AppColor.whiteColor),
+                            ),
+                            const SizedBox(width: 10),
+                            SizedBox(
+                              width: width * 0.3,
+                              child: Text(
+                                (widget.cakePrice * cakeCart * 1000).toString(),
+                                style: AppTextStyle.styleSubTitle.copyWith(color: AppColor.whiteColor),
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                            const SizedBox(width: 10),
+                            Text(
+                              "x ($cakeCart)",
+                              style: AppTextStyle.styleSubTitle.copyWith(color: AppColor.whiteColor),
+                            ),
+                          ],
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          _addCart();
+                        },
+                        child: Container(
+                          height: 80,
+                          width: 80,
+                          margin: const EdgeInsets.only(right: 10),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(30),
+                            color: AppColor.blackColor,
+                          ),
+                          child: const Center(
+                            child: Icon(
+                              Icons.add_shopping_cart_rounded,
+                              color: AppColor.whiteColor,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ],
             ),
           ),
